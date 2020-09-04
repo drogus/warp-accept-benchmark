@@ -2,22 +2,11 @@
 
 use futures::{FutureExt, StreamExt};
 use warp::Filter;
-use clap::{Arg, App};
 use std::net::{IpAddr, SocketAddr, Ipv4Addr};
 
 #[tokio::main]
 async fn main() {
-    let matches = App::new("Websockets server")
-        .arg(Arg::with_name("ports")
-            .short("p")
-            .long("ports")
-            .value_name("PORTS")
-            .help("Sets the number of ports to use")
-            .takes_value(true)
-            .required(false))
-        .get_matches();
-
-    let ports: u16 = matches.value_of("ports").unwrap_or("1").parse().expect("PORTS needs to be an unsigned integer");
+    let ports: u16 = std::env::var("PORTS").unwrap_or("1".to_owned()).parse().expect("PORTS needs to be an unsigned integer");
     
     pretty_env_logger::init();
 

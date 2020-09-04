@@ -45,16 +45,16 @@ connections: 50000, elapsed: 14691ms
 In order to run a version that opens more than one port you can run:
 
 ```
-cargo run --bin websockets-server --release -- --ports 12
+PORTS=12 cargo run --bin websockets-server --release
 ```
 
 and
 
 ```
-cargo run --bin stress-test --release -- --ports 12
+PORTS=12 cargo run --bin stress-test --release
 ```
 
-I used 12 as I have 12 CPU threads
+I used 12 ports as I have 12 CPU threads
 
 Now the results look more like this for me:
 
