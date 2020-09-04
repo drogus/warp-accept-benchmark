@@ -63,3 +63,13 @@ connections: 0, elapsed: 0ms
 connections: 44635, elapsed: 1000ms
 connections: 50000, elapsed: 2001ms
 ```
+
+There is also a version of the server that tries to bind N times to the same
+socket with the `reuse_port` option, but unfortunately it doesn't work, ie. the
+performance is the same of the single socket version.
+
+In order to try it out you can run:
+
+```
+PORTS=12 REUSE_PORT=true cargo run --bin stress-test --release
+```

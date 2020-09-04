@@ -1354,6 +1354,7 @@ name = "warp-accept-benchmark"
 version = "0.1.0"
 dependencies = [
  "futures",
+ "net2",
  "pretty_env_logger",
  "tokio",
  "tokio-tungstenite",
